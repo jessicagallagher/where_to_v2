@@ -25,11 +25,11 @@ export default function Signup() {
         email: userName
       })
       .catch(error => {
-        console.log('Something went wrong with added user to firestore: ', error);
+        console.log('user wasn\'t added to db: ', error);
       })
     })
     .catch(error => {
-      console.log('Something went wrong with sign up: ', error);
+      console.log('user wasn\'t able to cretae an account: ', error);
     })
     router.push('/users/dashboard')
   };
@@ -78,7 +78,7 @@ export default function Signup() {
                 </div>
                 <div className='pt-5'>
                   <div className='flex justify-end'>
-                    <button type='submit' className='inline-flex justify-center py-2 border border-teal text-base font-medium rounded-sm text-dkGrey-100 bg-transparent hover:border-purple-100 w-36'>
+                    <button type='submit' className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36'>
                       Submit
                     </button>
                   </div>
