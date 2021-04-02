@@ -25,11 +25,11 @@ export default function Signup() {
         email: userName
       })
       .catch(error => {
-        console.log('Something went wrong with added user to firestore: ', error);
+        console.log('user wasn\'t added to db: ', error);
       })
     })
     .catch(error => {
-      console.log('Something went wrong with sign up: ', error);
+      console.log('user wasn\'t able to cretae an account: ', error);
     })
     router.push('/users/dashboard')
   };
