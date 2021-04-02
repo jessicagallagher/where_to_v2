@@ -78,7 +78,7 @@ export default function Signup() {
                 </div>
                 <div className='pt-5'>
                   <div className='flex justify-end'>
-                    <button type='submit' className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-sm text-dkGrey-100 bg-transparent hover:border-purple-100 w-36'>
+                    <button type='submit' className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36'>
                       Submit
                     </button>
                   </div>

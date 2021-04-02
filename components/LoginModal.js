@@ -1,8 +1,28 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import LoginPortal from './LoginPortal';
+import fire from '../config/fire-config';
 
 export default function LoginModal() {
-  const [open, setOpen] = useState()
+  const router = useRouter();
+
+  const [open, setOpen] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    fire.auth()
+      .signInWithEmailAndPassword(username, password)
+      .catch((error) => {
+        console.log('user wasn\'t able to login: ', error);
+      })
+
+    setUsername('')
+    setPassword('')
+    router.push('/users/dashboard')
+  };
 
   return (
     <>
@@ -33,22 +53,22 @@ export default function LoginModal() {
               </h1>
             </div>
           </div>
-          <form className='mt-8 space-y-6'>
+          <form className='mt-8 space-y-6' onSubmit={handleLogin}>
       <div className='rounded-md shadow-sm -space-y-px'>
         <div>
-          <label for='email-address' className='sr-only'>Email</label>
-          <input id='email' name='email' type='text' required className='appearance-none rounded-none relative block w-full px-3 py-2 border border-teal-100 rounded-t-md focus:z-10 sm:text-sm' placeholder='Email' />
+          <label htmlFor='email' className='sr-only'>Email</label>
+          <input id='email' name='email' type='text' required className='appearance-none rounded-none relative block w-full px-3 py-2 border border-teal-100 rounded-t-md focus:z-10 sm:text-sm' placeholder='Email' value={username} onChange={({target}) => setUsername(target.value)} />
         </div>
         <div>
-          <label for='password' className='sr-only'>Password</label>
-          <input id='password' name='password' type='password' required className='appearance-none rounded-none relative block w-full px-3 py-2 border border-teal-100 rounded-b-md focus:z-10 sm:text-sm' placeholder='Password' />
+          <label htmlFor='password' className='sr-only'>Password</label>
+          <input id='password' name='password' type='password' required className='appearance-none rounded-none relative block w-full px-3 py-2 border border-teal-100 rounded-b-md focus:z-10 sm:text-sm' placeholder='Password' value={password} onChange={({target}) => setPassword(target.value)} />
         </div>
       </div>
 
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <input id='remember_me' name='remember_me' type='checkbox' className='h-4 w-4 border-dkGrey-100 rounded' />
-          <label for='remember_me' className='ml-2 block text-sm text-dkGrey-100'>
+          <label htmlFor='remember_me' className='ml-2 block text-sm text-dkGrey-100'>
             Remember me
           </label>
         </div>
