@@ -29,7 +29,7 @@ export default function Signup() {
       })
     })
     .catch(error => {
-      console.log('user wasn\'t able to cretae an account: ', error);
+      console.log('user wasn\'t able to create an account: ', error);
     })
     router.push('/users/dashboard')
   };
