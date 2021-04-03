@@ -161,8 +161,121 @@ export default function Create() {
                           </select>
                       </div>
                     </div>
+                    
                   </div>
+                  
                   </div>
+                  <div className='mt-1 pt-5'>
+                  <div className='flex justify-start'>
+                    <button type='submit' className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36'>
+                      Next
+                    </button>
+                  </div>
+                </div>
+                  <div className='my-6 lg:border-t lg:border-b lg:border-purple-100'>
+                    <nav className='mx-auto max-w-7x1 px-4 sm:px-6 lg:px-8' aria-label='Progress Bar'>
+                      <ol className='rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-ltGrey-100 lg:rounded-none'>
+                        <li className='relative overflow-hidden lg:flex-1'>
+                          {/* current */}
+                          <div className='border border-ltGrey-100 overflow-hidden lg:border-0'>
+                            <a href='#' aria-current='step'>
+                              <span className='absolute top-0 left-0 w-1 h-full bg-purple-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
+                              <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
+                                <span className='flex-shrink-0'>
+                                  <span className='w-10 h-10 flex items-center justify-center border-2 border-purple-100 rounded-full'>
+                                    <span className='text-purple-100'>1</span>
+
+                                  </span>
+
+                                </span>
+                                <span className='mt-0.5 ml-4 min-w-0 flex flex-col'>
+                                  <span className='text-xs font-semibold text-purple-100 tracking-wide uppercase'>Trip Name + Dates</span>
+
+                                </span>
+                              </span>
+
+                            </a>
+                            {/* separator */}
+                            <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
+                              <svg class="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
+              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+            </svg>
+
+                            </div>
+
+                          </div>
+
+                        </li>
+                        <li className='relative overflow-hidden lg:flex-1'>
+                          <div className='border border-ltGrey-100 overflow-hidden border-t-0 rounded-b-md lg:border-0'>
+                            {/* upcoming */}
+                            <a href='#' className='group'>
+                              <span className='absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-ltGrey-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
+                              <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
+                                <span className='flex-shrink-0'>
+                                  <span className='w-10 h-10 flex items-center justify-center border-2 border-ltGrey-100 rounded-full'>
+                                    <span className='text-ltGrey-100'>2</span>
+
+                                  </span>
+
+                                </span>
+                                <span className='mt-0.5 ml-4 min-w-0 flex flex-col'>
+                                  <span className='text-xs font-semibold text-ltGrey-100 tracking-wide uppercase'>Flight Details</span>
+
+                                </span>
+
+                              </span>
+
+                            </a>
+                            {/* separator */}
+                            <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
+                              <svg class="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
+              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+            </svg>
+
+                            </div>
+
+                          </div>
+
+                        </li>
+                        <li className='relative overflow-hidden lg:flex-1'>
+                          <div className='border border-ltGrey-100 overflow-hidden border-t-0 rounded-b-md lg:border-0'>
+                            {/* upcoming */}
+                            <a href='#' className='group'>
+                              <span className='absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-ltGrey-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
+                              <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
+                                <span className='flex-shrink-0'>
+                                  <span className='w-10 h-10 flex items-center justify-center border-2 border-ltGrey-100 rounded-full'>
+                                    <span className='text-ltGrey-100'>3</span>
+
+                                  </span>
+
+                                </span>
+                                <span className='mt-0.5 ml-4 min-w-0 flex flex-col'>
+                                  <span className='text-xs font-semibold text-ltGrey-100 tracking-wide uppercase'>Packing List</span>
+
+                                </span>
+
+                              </span>
+
+                            </a>
+                            {/* separator */}
+                            <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
+                              <svg className="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
+              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+            </svg>
+
+                            </div>
+
+                          </div>
+
+                        </li>
+                      </ol>
+
+
+                    </nav>
+
+                    </div>
                 </div>
               </div>
 

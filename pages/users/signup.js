@@ -44,8 +44,8 @@ export default function Signup() {
       </Head>
       <div className='bg-white overflow-hidden shadow sm:rounded-lg w-1/2'>
       <div className='px-4 py-5 sm:p-6 relative'>
-      <form onSubmit={handleSubmit} className='space-y-8 divide-y divide-gray-200'>
-        <div className='space-y-8 divide-y divide-gray-200'>
+      <form onSubmit={handleSubmit} className='space-y-8 divide-y divide-mdGrey-100'>
+        <div className='space-y-8 divide-y divide-ltGrey-100-200'>
           <div>
             <div className='pt-8'>
               <div>
