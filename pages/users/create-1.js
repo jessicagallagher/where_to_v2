@@ -10,7 +10,7 @@ export default function Create() {
       <div className='bg-white overflow-hidden shadow sm:rounded-lg w-1/2'>
         <div className='px-4 py-5 sm:p-6 relative'>
           <form className='space-y-8 divide-y divide-mdGrey-100'>
-            <div className='space-y-8 divide-y divide-ltGrey-100-200'>
+            <div className='space-y-8 divide-y divide-mdGrey-100'>
               <div>
                 <div className='pt-8'>
                   <div>
@@ -30,7 +30,7 @@ export default function Create() {
                       <p className='block text-lg text-dkGrey-100'>Leaving on</p>
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
-                        <select id="month" name="month" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='month' name='month' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -48,7 +48,7 @@ export default function Create() {
                       <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
-                        <select id="day" name="day" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -86,7 +86,7 @@ export default function Create() {
                     <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>YYYY</label>
                       <div className='mt-1'>
-                        <select id="day" name="day" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>2021</option>
                           <option>2022</option>
                           <option>2023</option>
@@ -98,7 +98,7 @@ export default function Create() {
                       <p className='block text-lg text-dkGrey-100'>Returning on</p>
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
-                        <select id="month" name="month" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='month' name='month' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -116,7 +116,7 @@ export default function Create() {
                       <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
-                        <select id="day" name="day" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -154,7 +154,7 @@ export default function Create() {
                     <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>YYYY</label>
                       <div className='mt-1'>
-                        <select id="day" name="day" className="shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm">
+                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
                           <option selected>2021</option>
                           <option>2022</option>
                           <option>2023</option>
@@ -178,7 +178,7 @@ export default function Create() {
                         <li className='relative overflow-hidden lg:flex-1'>
                           {/* current */}
                           <div className='border border-ltGrey-100 overflow-hidden lg:border-0'>
-                            <a href='#' aria-current='step'>
+                            <a href='#' className='group' aria-current='step'>
                               <span className='absolute top-0 left-0 w-1 h-full bg-purple-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
                               <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
                                 <span className='flex-shrink-0'>
@@ -197,8 +197,8 @@ export default function Create() {
                             </a>
                             {/* separator */}
                             <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
-                              <svg class="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
-              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+                              <svg className='h-full w-full text-ltGrey-100' viewBox='0 0 12 82' fill='none' preserveAspectRatio='none'>
+              <path d='M0.5 0V31L10.5 41L0.5 51V82' stroke='currentcolor' vectorEffect='non-scaling-stroke' />
             </svg>
 
                             </div>
@@ -209,7 +209,7 @@ export default function Create() {
                         <li className='relative overflow-hidden lg:flex-1'>
                           <div className='border border-ltGrey-100 overflow-hidden border-t-0 rounded-b-md lg:border-0'>
                             {/* upcoming */}
-                            <a href='#' className='group'>
+                            <a href='/users/create-2' className='group'>
                               <span className='absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-ltGrey-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
                               <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
                                 <span className='flex-shrink-0'>
@@ -229,8 +229,8 @@ export default function Create() {
                             </a>
                             {/* separator */}
                             <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
-                              <svg class="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
-              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+                              <svg className='h-full w-full text-ltGrey-100' viewBox='0 0 12 82' fill='none' preserveAspectRatio='none'>
+              <path d='M0.5 0V31L10.5 41L0.5 51V82' stroke='currentcolor' vectorEffect='non-scaling-stroke' />
             </svg>
 
                             </div>
@@ -261,8 +261,8 @@ export default function Create() {
                             </a>
                             {/* separator */}
                             <div className='hidden absolute top-0 left-0 w-3 inset-0 lg:block' aria-hidden='true'>
-                              <svg className="h-full w-full text-ltGrey-100" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
-              <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
+                              <svg className='h-full w-full text-ltGrey-100' viewBox='0 0 12 82' fill='none' preserveAspectRatio='none'>
+              <path d='M0.5 0V31L10.5 41L0.5 51V82' stroke='currentcolor' vectorEffect='non-scaling-stroke' />
             </svg>
 
                             </div>
