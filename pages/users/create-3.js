@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function SecondStep() {
+export default function ThirdStep() {
   return (
     <div className='container flex flex-col justify-center items-center mx-auto py-0 px-2 min-h-screen sm:px-6 lg:px-8'>
       <Head>
@@ -13,7 +13,7 @@ export default function SecondStep() {
             <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
               <div>
                   <div>
-                    <h3 className='font-accent md:text-3xl my-3 text-dkGrey-100 text-center'>Flight Details</h3>
+                    <h3 className='font-accent md:text-3xl my-3 text-dkGrey-100 text-center'>Packing List</h3>
                     <h3 className='text-lg leading-6 font-medium text-dkGrey-100'>
           Flight Info
         </h3>
@@ -259,7 +259,7 @@ export default function SecondStep() {
                         <li className='relative overflow-hidden lg:flex-1'>
                           <div className='border border-ltGrey-100 overflow-hidden border-t-0 rounded-b-md lg:border-0'>
                             {/* upcoming */}
-                            <a href='/users/create-3' className='group'>
+                            <a href='#' className='group'>
                               <span className='absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-ltGrey-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
                               <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
                                 <span className='flex-shrink-0'>

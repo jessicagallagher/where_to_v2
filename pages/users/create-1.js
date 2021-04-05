@@ -241,7 +241,7 @@ export default function Create() {
                         <li className='relative overflow-hidden lg:flex-1'>
                           <div className='border border-ltGrey-100 overflow-hidden border-t-0 rounded-b-md lg:border-0'>
                             {/* upcoming */}
-                            <a href='#' className='group'>
+                            <a href='/users/create-3' className='group'>
                               <span className='absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-ltGrey-100 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto' aria-hidden='true'></span>
                               <span className='px-6 py-5 flex items-start text-sm font-medium lg:pl-9'>
                                 <span className='flex-shrink-0'>
