@@ -10,17 +10,21 @@ export default function ThirdStep() {
   const [clothesItem, setClothesItem] = useState([]);
   const [toiletriesItem, setToiletriesItem] = useState([]);
   const [miscItem, setMiscItem] = useState([]);
-  const [clothesName, setClothesName] = useState('');
+  const [isAdded, setIsAdded] = useState(false);
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let addIt = fire.firestore().collection('new').doc('test');
-
-    addIt.update({
-      name: fire.firestore.FieldValue.arrayUnion(clothesName)
-    })
+    console.log(isAdded)
     
+    fire.firestore()
+    .collection('new')
+    .add({
+      itemName : clothesItem,
+      isAdded : isAdded
+
+    });
 
     
 
@@ -106,15 +110,19 @@ export default function ThirdStep() {
                         </h3>
 
                         {/* start card lists */}
+                        
                         <ul className='mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4'>
                           {clothesItem.map(clothes =>
-                            <li key={clothes.id} className='col-span-1 flex shadow-sm rounded-md' value={clothesName} onClick={({target}) => setClothesName(target.value)}>
+                            <li key={clothes.id} className='col-span-1 flex shadow-sm rounded-md'>
                               <div className='flex-shrink-0 flex items-center justify-center w-16 bg-purple-100 bg-opacity-50 border border-mdGrey-100 text-dkGrey-100 text-2xl font-medium rounded-l-md'>
+                                <label className='absolute p-9' key={clothes.id}><input type='checkbox' className='absolute' onClick={({target}) => setIsAdded(!isAdded)} isAdded={isAdded} value={clothes.name} id='isAdded' name='isAdded'/></label>
+                                
                                 <FontAwesomeIcon icon={faTshirt} />
                               </div>
                               <div className='flex-1 flex items-center justify-between border-t border-r border-b border-mdGrey-100 bg-white rounded-r-md'>
                                 
                                 <div className='flex-1 px-4 py-2 text-sm'>
+                                  
                                   {clothes.name}
                                   
 
@@ -213,6 +221,7 @@ export default function ThirdStep() {
                         <h3 className='text-lg leading-6 font-medium text-teal-100'>
                           Your Packing List
                         </h3>
+                        
                         
                     </div>
                   </div>
