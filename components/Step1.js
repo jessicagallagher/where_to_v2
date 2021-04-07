@@ -29,7 +29,7 @@ export default function Step1({ setForm, formData, navigation }) {
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
                         <select id='startMonth' name='startMonth' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={startMonth} onChange={setForm}>
-                          <option selected>01</option>
+                          <option defaultValue>01</option>
                           <option>02</option>
                           <option>03</option>
                           <option>04</option>
@@ -47,7 +47,7 @@ export default function Step1({ setForm, formData, navigation }) {
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
                         <select id='startDay' name='startDay' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={startDay} onChange={setForm}>
-                          <option selected>01</option>
+                          <option defaultValue>01</option>
                           <option>02</option>
                           <option>03</option>
                           <option>04</option>
@@ -87,7 +87,7 @@ export default function Step1({ setForm, formData, navigation }) {
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
                         <select id='endMonth' name='endMonth' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={endMonth} onChange={setForm}>
-                          <option selected>01</option>
+                          <option defaultValue>01</option>
                           <option>02</option>
                           <option>03</option>
                           <option>04</option>
@@ -105,7 +105,7 @@ export default function Step1({ setForm, formData, navigation }) {
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
                         <select id='endDay' name='endDay' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={endDay} onChange={setForm}>
-                          <option selected>01</option>
+                          <option defaultValue>01</option>
                           <option>02</option>
                           <option>03</option>
                           <option>04</option>

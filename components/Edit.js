@@ -32,21 +32,12 @@ export default function Edit({ setForm, formData, navigation }) {
     
     fire.firestore()
     .collection('itinerary')
-    .doc('trip-name-dates')
-    .set({
+    .add({
       tripName: tripName,
       startMonth: parseInt(startMonth),
       startDay: parseInt(startDay),
       endMonth: parseInt(endMonth),
       endDay: parseInt(endDay),
-    })
-    .catch(error => {
-      console.log('trip details not added to db ', error)
-    })
-    fire.firestore()
-    .collection('itinerary/trip-name-dates/flight-details')
-    .doc('departure-info')
-    .set({
       airportCode: airportCode,
       airlineName: airlineName,
       flightNumber: flightNumber,
@@ -58,20 +49,12 @@ export default function Edit({ setForm, formData, navigation }) {
       city: city,
       state: state,
       zip: parseInt(zip),
-    })
-    .catch(error => {
-      console.log('departure info not added to db ', error)
-    })
-    fire.firestore()
-    .collection('itinerary/trip-name-dates/flight-details/departure-info/packing')
-    .doc('packing-list')
-    .set({
       clothesItem: fire.firestore.FieldValue.arrayUnion(clothesItem),
       toiletriesItem: fire.firestore.FieldValue.arrayUnion(toiletriesItem),
       miscItem: fire.firestore.FieldValue.arrayUnion(miscItem)
     })
     .catch(error => {
-      console.log('packing list not added to db ', error)
+      console.log('itinerary not added to db ', error)
     })
     router.push('/users/dashboard')
   }

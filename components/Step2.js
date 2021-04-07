@@ -52,7 +52,7 @@ export default function Step2({ setForm, formData,  navigation }) {
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
                           <select id='departureHour' name='departureHour' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2' value={departureHour} onChange={setForm}>
-                          <option selected>1</option>
+                          <option defaultValue>1</option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>
@@ -66,13 +66,13 @@ export default function Step2({ setForm, formData,  navigation }) {
                           <option>12</option>
                           </select>
                           <select id='departureMinute' name='departureMinute' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2' value={departureMinute} onChange={setForm}>
-                          <option selected>:00</option>
+                          <option defaultValue>:00</option>
                           <option>:15</option>
                           <option>:30</option>
                           <option>:45</option>
                           </select>
                           <select id='amPm' name='amPm' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={amPm} onChange={setForm}>
-                          <option selected>AM</option>
+                          <option defaultValue>AM</option>
                           <option>PM</option>
                           </select>
 
@@ -141,7 +141,7 @@ export default function Step2({ setForm, formData,  navigation }) {
                           <option>NH</option>
                           <option>NJ</option>
                           <option>NM</option>
-                          <option selected>NY</option>
+                          <option defaultValue>NY</option>
                           <option>NC</option>
                           <option>ND</option>
                           <option>OH</option>
