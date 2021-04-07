@@ -31,7 +31,7 @@ export default function Edit({ setForm, formData, navigation }) {
     e.preventDefault();
     
     fire.firestore()
-    .collection('itinerary')
+    .collection('users').doc(fire.auth().currentUser.uid).collection('itineraries')
     .add({
       tripName: tripName,
       startMonth: parseInt(startMonth),
