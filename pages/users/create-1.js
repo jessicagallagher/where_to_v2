@@ -1,6 +1,46 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import fire from '../../config/fire-config';
 
 export default function Create() {
+  const router = useRouter();
+
+  const [tripName, setTripName] = useState('');
+  const [startMonth, setStartMonth] = useState('');
+  const [startDay, setStartDay] = useState('');
+  const [endMonth, setEndMonth] = useState('');
+  const [endDay, setEndDay] = useState('');
+
+  // firestore takes everything in as a string when using useState. numbers go in as strings but are capped at 2...
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fire.firestore()
+    .collection('itinerary/tripName/tripdetails')
+    .add({
+      tripName: tripName,
+      startMonth: startMonth,
+      startDay: startDay,
+      endMonth: endMonth,
+      endDay: endDay
+    })
+    .catch(error => {
+      console.log('trip info not added to db');
+    })
+
+    setTripName('');
+    setStartMonth('');
+    setStartDay('');
+    setEndMonth('');
+    setEndDay('');
+
+    router.push('/users/create-2')
+  };
+
+
+
   return (
     <div className='container flex flex-col justify-center items-center mx-auto py-0 px-2 min-h-screen sm:px-6 lg:px-8'>
       <Head>
@@ -9,7 +49,7 @@ export default function Create() {
       </Head>
       <div className='bg-white overflow-hidden shadow sm:rounded-lg w-1/2'>
         <div className='px-4 py-5 sm:p-6 relative'>
-          <form className='space-y-8 divide-y divide-mdGrey-100'>
+          <form className='space-y-8 divide-y divide-mdGrey-100' onSubmit={handleSubmit}>
             <div className='space-y-8 divide-y divide-mdGrey-100'>
               <div>
                 <div className='pt-8'>
@@ -21,7 +61,7 @@ export default function Create() {
                     <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100 text-center'>Trip name</label>
                       <div className='mt-1'>
-                        <input type='text' name='tripName'  id='tripName' placeholder='Weekend Getaway' className='shadow-md block w-full sm:text-sm border border-ltLime-100 rounded-sm'></input>
+                        <input type='text' name='tripName'  id='tripName' placeholder='Weekend Getaway' className='shadow-md block w-full sm:text-sm border border-ltLime-100 rounded-sm' value={tripName} onChange={({target}) => setTripName(target.value)}></input>
                       </div>
                     </div>
                     </div>
@@ -30,7 +70,7 @@ export default function Create() {
                       <p className='block text-lg text-dkGrey-100'>Leaving on</p>
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
-                        <select id='month' name='month' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                        <select id='startMonth' name='startMonth' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={startMonth} onChange={({target}) => setStartMonth(target.value)}>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -48,7 +88,7 @@ export default function Create() {
                       <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
-                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                        <select id='startDay' name='startDay' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={startDay} onChange={({target}) => setStartDay(target.value)}>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -80,16 +120,6 @@ export default function Create() {
                           <option>29</option>
                           <option>30</option>
                           <option>31</option>
-                          </select>
-                      </div>
-                    </div>
-                    <div className='sm:col-span-3'>
-                      <label className='block text-lg text-dkGrey-100'>YYYY</label>
-                      <div className='mt-1'>
-                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
-                          <option selected>2021</option>
-                          <option>2022</option>
-                          <option>2023</option>
                           </select>
                       </div>
                     </div>
@@ -98,7 +128,7 @@ export default function Create() {
                       <p className='block text-lg text-dkGrey-100'>Returning on</p>
                       <label className='block text-lg text-dkGrey-100'>MM</label>
                       <div className='mt-1'>
-                        <select id='month' name='month' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                        <select id='endMonth' name='endMonth' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={endMonth} onChange={({target}) => setEndMonth(target.value)}>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -116,7 +146,7 @@ export default function Create() {
                       <div className='sm:col-span-3'>
                       <label className='block text-lg text-dkGrey-100'>DD</label>
                       <div className='mt-1'>
-                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                        <select id='endDay' name='endDay' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={endDay} onChange={({target}) => setEndDay(target.value)}>
                           <option selected>01</option>
                           <option>02</option>
                           <option>03</option>
@@ -151,17 +181,6 @@ export default function Create() {
                           </select>
                       </div>
                     </div>
-                    <div className='sm:col-span-3'>
-                      <label className='block text-lg text-dkGrey-100'>YYYY</label>
-                      <div className='mt-1'>
-                        <select id='day' name='day' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
-                          <option selected>2021</option>
-                          <option>2022</option>
-                          <option>2023</option>
-                          </select>
-                      </div>
-                    </div>
-                    
                   </div>
                   
                   </div>

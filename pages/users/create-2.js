@@ -1,6 +1,59 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import fire from '../../config/fire-config';
 
 export default function SecondStep() {
+  const router = useRouter();
+
+  const [airportCode, setAirportCode] = useState('');
+  const [airlineName, setAirlineName] = useState('');
+  const [flightNumber, setFlightNumber] = useState('');
+  const [departureHour, setDepartureHour] = useState('');
+  const [departureMinute, setDepartureMinute] = useState('');
+  const [amPm, setAmPm] = useState('');
+  const [houseNumber, setHouseNumber] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fire.firestore()
+    .collection('itinerary/tripName/tripdetails/flightDeets/flightinfo')
+    .add({
+      airportCode: setAirportCode,
+      airlineName: setAirlineName,
+      flightNumber: setFlightNumber,
+      departureHour: setDepartureHour,
+      departureMinute: setDepartureMinute,
+      amPm: setAmPm,
+      houseNumber: setHouseNumber,
+      street: setStreet,
+      city: setCity,
+      state: setState,
+      zip: setZip
+    })
+    .catch(error => {
+      console.log('flight info not added to db')
+    })
+
+    setAirportCode('');
+    setAirlineName('');
+    setFlightNumber('');
+    setDepartureHour('');
+    setDepartureMinute('');
+    setAmPm('');
+    setHouseNumber('');
+    setStreet('');
+    setCity('');
+    setState('');
+    setZip('');
+  }
+
+
   return (
     <div className='container flex flex-col justify-center items-center mx-auto py-0 px-2 min-h-screen sm:px-6 lg:px-8'>
       <Head>
@@ -9,7 +62,7 @@ export default function SecondStep() {
       </Head>
       <div className='bg-white overflow-hidden shadow sm:rounded-lg w-1/2'>
         <div className='px-4 py-5 sm:p-6 relative'>
-          <form className='space-y-8 divide-y divide-mdGrey-100'>
+          <form className='space-y-8 divide-y divide-mdGrey-100' onSubmit={handleSubmit}>
             <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
               <div>
                   <div>
@@ -27,7 +80,7 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Airport code</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='airportCode' id='airportCode' placeholder='JFK' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md'></input>
+                          <input type='text' name='airportCode' id='airportCode' placeholder='JFK' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={airportCode} onChange={({target}) => setAirportCode(target.value)}></input>
 
                         </div>
 
@@ -39,8 +92,8 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Airline name + flight number</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='airlineName' id='airlineName' placeholder='Delta' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2'></input>
-                          <input type='text' name='flightNumber' id='flightNumber' placeholder='DL123' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md'></input>
+                          <input type='text' name='airlineName' id='airlineName' placeholder='Delta' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2' value={airlineName} onChange={({target}) => setAirlineName(target.value)}></input>
+                          <input type='text' name='flightNumber' id='flightNumber' placeholder='DL123' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={flightNumber} onChange={({target}) => setFlightNumber(target.value)}></input>
 
                         </div>
 
@@ -53,7 +106,7 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Flight departure time</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <select id='departureHour' name='departureHour' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2'>
+                          <select id='departureHour' name='departureHour' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2' value={departureHour} onChange={({target}) => setDepartureHour(target.value)}>
                           <option selected>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -67,13 +120,13 @@ export default function SecondStep() {
                           <option>11</option>
                           <option>12</option>
                           </select>
-                          <select id='departureMinute' name='departureMinute' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2'>
+                          <select id='departureMinute' name='departureMinute' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2' value={departureMinute} onChange={({target}) => setDepartureMinute(target.value)}>
                           <option selected>:00</option>
                           <option>:15</option>
                           <option>:30</option>
                           <option>:45</option>
                           </select>
-                          <select id='amPm' name='amPm' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                          <select id='amPm' name='amPm' className='shadow-md block w-3/4 border text-base border-ltLime-100 sm:text-sm rounded-sm' value={amPm} onChange={({target}) => setAmPm(target.value)}>
                           <option selected>AM</option>
                           <option>PM</option>
                           </select>
@@ -96,8 +149,8 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Address</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='number' name='houseNumber' id='houseNumber' placeholder='39' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2'></input>
-                          <input type='text' name='street' id='street' placeholder='Carroll Street' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md'></input>
+                          <input type='number' name='houseNumber' id='houseNumber' placeholder='39' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2' value={houseNumber} onChange={({target}) => setHouseNumber(target.value)}></input>
+                          <input type='text' name='street' id='street' placeholder='Carroll Street' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={street} onChange={({target}) => setStreet(target.value)}></input>
 
                         </div>
 
@@ -109,8 +162,8 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>City + State</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='city' id='city' placeholder='Brooklyn' className='shadow-md block w-full border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2'></input>
-                          <select id='state' name='state' className='shadow-md block w-full border text-base border-ltLime-100 sm:text-sm rounded-sm'>
+                          <input type='text' name='city' id='city' placeholder='Brooklyn' className='shadow-md block w-full border text-base border-ltLime-100 sm:text-sm rounded-sm mr-2' value={city} onChange={({target}) => setCity(target.value)}></input>
+                          <select id='state' name='state' className='shadow-md block w-full border text-base border-ltLime-100 sm:text-sm rounded-sm' value={state} onChange={({target}) => setState(target.value)}>
                           <option>AL</option>
                           <option>AK</option>
                           <option>AZ</option>
@@ -175,7 +228,7 @@ export default function SecondStep() {
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Zip</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='number' name='zip' id='zip' placeholder='11231' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md'></input>
+                          <input type='number' name='zip' id='zip' placeholder='11231' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={zip} onChange={({target}) => setZip(target.value)}></input>
 
                         </div>
 
