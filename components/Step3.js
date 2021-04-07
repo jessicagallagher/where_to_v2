@@ -3,7 +3,6 @@ import React from 'react';
 
 export default function Step3({ setForm, formData, navigation }) {
   const { clothesItem, toiletriesItem, miscItem } = formData;
-
   const { previous, next } = navigation;
 
   return (

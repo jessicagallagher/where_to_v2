@@ -2,11 +2,9 @@ import React from 'react';
 
 export default function Step1({ setForm, formData, navigation }) {
   const { tripName, startMonth, startDay, endMonth, endDay } = formData;
-
   const { next } = navigation;
 
   return (
-    // <div className='container flex flex-col justify-center items-center mx-auto py-0 px-2 min-h-screen sm:px-6 lg:px-8'>
       <div className='bg-white overflow-hidden shadow sm:rounded-lg w-1/2'>
         <div className='px-4 py-5 sm:p-6 relative'>
           <form className='space-y-8 divide-y divide-mdGrey-100'>
@@ -162,8 +160,6 @@ export default function Step1({ setForm, formData, navigation }) {
         </div>
 
       </div>
-
-    // </div>
   );
 
 };

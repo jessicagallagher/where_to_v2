@@ -4,7 +4,7 @@ import fire from '../config/fire-config';
 
 export default function Edit({ setForm, formData, navigation }) {
   const router = useRouter();
-  
+
   const {
     tripName,
     startMonth,
@@ -29,32 +29,49 @@ export default function Edit({ setForm, formData, navigation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     fire.firestore()
-    .collection(`itinerary/${tripName}/flight-info/${airportCode}/packing-list`)
-    .add({
+    .collection('itinerary')
+    .doc('trip-name-dates')
+    .set({
       tripName: tripName,
-      startMonth: startMonth,
-      startDay: startDay,
-      endMonth: endMonth,
-      endDay: endDay,
+      startMonth: parseInt(startMonth),
+      startDay: parseInt(startDay),
+      endMonth: parseInt(endMonth),
+      endDay: parseInt(endDay),
+    })
+    .catch(error => {
+      console.log('trip details not added to db ', error)
+    })
+    fire.firestore()
+    .collection('itinerary/trip-name-dates/flight-details')
+    .doc('departure-info')
+    .set({
       airportCode: airportCode,
       airlineName: airlineName,
       flightNumber: flightNumber,
-      departureHour: departureHour,
+      departureHour: parseInt(departureHour),
       departureMinute: departureMinute,
       amPm: amPm,
-      houseNumber: houseNumber,
+      houseNumber: parseInt(houseNumber),
       street: street,
       city: city,
       state: state,
-      zip: zip,
-      clothesItem: clothesItem,
-      toiletriesItem: toiletriesItem,
-      miscItem: miscItem
+      zip: parseInt(zip),
     })
     .catch(error => {
-      console.log('not added to db ', error)
+      console.log('departure info not added to db ', error)
+    })
+    fire.firestore()
+    .collection('itinerary/trip-name-dates/flight-details/departure-info/packing')
+    .doc('packing-list')
+    .set({
+      clothesItem: fire.firestore.FieldValue.arrayUnion(clothesItem),
+      toiletriesItem: fire.firestore.FieldValue.arrayUnion(toiletriesItem),
+      miscItem: fire.firestore.FieldValue.arrayUnion(miscItem)
+    })
+    .catch(error => {
+      console.log('packing list not added to db ', error)
     })
     router.push('/users/dashboard')
   }
@@ -82,7 +99,7 @@ export default function Edit({ setForm, formData, navigation }) {
           Flight Details
         </h3>
         <p>
-          {`Headed to ${airportCode} airport from ${houseNumber} ${street} in ${city}, ${state}, ${zip} on ${airlineName} flight ${flightNumber}, which departs at ${departureHour}:${departureMinute} ${amPm}`}
+          {`Headed to ${airportCode} airport from ${houseNumber} ${street} in ${city}, ${state}, ${zip} on ${airlineName} flight ${flightNumber}, which departs at ${departureHour}${departureMinute} ${amPm}`}
         </p>
         <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36' onClick={() => go('step2')}>
                       Edit
