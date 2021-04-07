@@ -164,6 +164,6 @@ export default function Step1({ setForm, formData, navigation }) {
       </div>
 
     // </div>
-  )
+  );
 
-}
+};

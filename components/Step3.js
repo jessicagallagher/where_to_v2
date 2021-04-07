@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function Step3({ setForm, formData, navigation }) {
   const { clothesItem, toiletriesItem, miscItem } = formData;
 
@@ -25,7 +26,7 @@ export default function Step3({ setForm, formData, navigation }) {
                     <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Item</label>
                     <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='clothesItem' id='clothesItem' placeholder='socks' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={clothesItem} onChange={setForm}></input>
+                          <input type='text' name='clothesItem' id='clothesItem' placeholder='swimsuit, beach hat, sunnies' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={clothesItem} onChange={setForm}></input>
                         </div>
                       </div>
                   </div>
@@ -49,7 +50,7 @@ export default function Step3({ setForm, formData, navigation }) {
                     <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Item</label>
                     <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='toiletriesItem' id='toiletriesItem' placeholder='toothbrush' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={toiletriesItem} onChange={setForm}></input>
+                          <input type='text' name='toiletriesItem' id='toiletriesItem' placeholder='toothbrush, toothpaste, makeup' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={toiletriesItem} onChange={setForm}></input>
                         </div>
                       </div>
                   </div>
@@ -73,7 +74,7 @@ export default function Step3({ setForm, formData, navigation }) {
                     <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Item</label>
                     <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
-                          <input type='text' name='miscItem' id='miscItem' placeholder='toothbrush' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={miscItem} onChange={setForm}></input>
+                          <input type='text' name='miscItem' id='miscItem' placeholder='passport, laptop, phone charger' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={miscItem} onChange={setForm}></input>
                         </div>
                       </div>
                   </div>
@@ -98,5 +99,5 @@ export default function Step3({ setForm, formData, navigation }) {
       </div>
 
     </div>
-  )
-}
+  );
+};
