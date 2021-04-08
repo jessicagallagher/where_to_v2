@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LoginPortal from './LoginPortal';
 import fire from '../config/fire-config';
@@ -9,6 +9,7 @@ export default function LoginModal() {
   const [open, setOpen] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,6 +22,21 @@ export default function LoginModal() {
 
     setUsername('')
     setPassword('')
+
+    
+
+    fire.auth()
+  .onAuthStateChanged((user) => {
+    if (user) {
+      let uid = user.uid
+      console.log(user.email + " is logged in!");
+      setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+      console.log('User is logged out!');
+    }
+  })
+
     router.push('/users/dashboard')
   };
 
