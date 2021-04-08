@@ -7,11 +7,23 @@ import Link from 'next/link';
 export default function Dashboard() {
   const router = useRouter();
   const [itineraries, setItineraries] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  fire.auth()
+  .onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user.email + " is logged in!");
+      setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+      console.log('User is logged out!');
+    }
+  })
 
   useEffect(() => {
     const unsubscribe =
     fire.firestore()
-    .collection('itinerary')
+    .collection('users').doc(fire.auth().currentUser.uid).collection('itineraries').where('tripName', '!=', 'null')
     .onSnapshot(snap => {
       const itineraries = snap.docs.map(doc => ({
         id: doc.id,
@@ -23,6 +35,7 @@ export default function Dashboard() {
       };
     });
   }, []);
+
 
   const handleLogout = () => {
     fire.auth()
