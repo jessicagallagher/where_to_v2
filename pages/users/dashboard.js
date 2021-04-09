@@ -198,17 +198,22 @@ export default function Dashboard() {
                             <h3 className='md:text-xl text-dkGrey-100'>
                               {itinerary.tripName}
                             </h3>
+                            
                             <Link href='/itineraries/[id]' as={'/itineraries/' + itinerary.id}>
                             <a className='inline-flex items-center shadow-lg px-2.5 py-0.5 border border-lime-100 md:text-lg leading-5 font-medium rounded-full text-dkGrey-100 bg-white hover:bg-purple-100 hover:border-teal-100 hover:text-white'>
                                 Details
                               </a>
                               </Link>
+                              
+                              
+                              
                             
                             </div>
                             <div>
                               <p className='md:text-md text-mdGrey-100'>
                               {itinerary.startMonth}.{itinerary.startDay} - {itinerary.endMonth}.{itinerary.endDay}
                             </p>
+                           
                             </div>
                         </div>
                       
