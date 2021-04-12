@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import fire from '../../config/fire-config';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -40,11 +38,14 @@ export default function Dashboard() {
     });
   }, []);
 
+
   const handleLogout = () => {
     fire.auth()
       .signOut()
     router.push('/')
   };
+
+  
 
   return (
     <div>
@@ -189,9 +190,7 @@ export default function Dashboard() {
                     <div className='flex space-x-3'>
                       
                         
-                          <div className='md:text-xl text-purple-100'>
-                            <FontAwesomeIcon icon={faStar} />
-                          </div>
+                         
                         
                         <div className='flex-1 space-y-1'>
                           <div className='flex items-center justify-between'>
@@ -213,6 +212,7 @@ export default function Dashboard() {
                               <p className='md:text-md text-mdGrey-100'>
                               {itinerary.startMonth}.{itinerary.startDay} - {itinerary.endMonth}.{itinerary.endDay}
                             </p>
+                            
                            
                             </div>
                         </div>
@@ -225,13 +225,14 @@ export default function Dashboard() {
             </div>
           </div>
         </main>
-        <aside className='hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-teal-100'>
+        {/* for a future iteration */}
+        {/* <aside className='hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-teal-100'>
           <div className='absolute inset-0 py-6 px-4 sm:px-6 lg:px-8'>
             <div className='h-full border-2 border-gray-200 border-dashed rounded-lg'>
               <h1 className='text-center'>Past Trips</h1>
             </div>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </div>
     </div>

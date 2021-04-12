@@ -40,9 +40,12 @@ export default function LoginModal() {
     router.push('/users/dashboard')
   };
 
+  // absolute py-2 left-1/3 bottom-1/3 ml-8
+
   return (
     <>
-    <button type='button' className='absolute py-2 left-1/3 bottom-1/3 ml-8 border border-teal-100 bg-transparent text-base font-medium rounded-md text-dkGrey-100 hover:border-purple-100 w-36' onClick={() => setOpen(true)}>Login</button>
+    <button type='button' className='inline-flex float-left justify-center py-2 border border-teal-100 bg-transparent text-base font-medium rounded-md text-dkGrey-100 hover:border-purple-100 w-36' onClick={() => setOpen(true)}>Login</button>
+    
     {open && (
       <LoginPortal selector='#modal'>
     <div className='fixed z-10 inset-0 overflow-y-auto' aria-labelledby='modal-title' role='dialog' aria-modal='true'>

@@ -11,6 +11,7 @@ export default function Create() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <MultiStepForm />
+     
     </div>
   )
 }
