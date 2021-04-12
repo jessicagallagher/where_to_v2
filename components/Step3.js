@@ -37,7 +37,7 @@ export default function Step3({ setForm, formData, navigation }) {
           <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
             <div>
               <div>
-                  <h3 className='text-lg leading-6 font-medium text-dkGrey-100'>
+                  <h3 className='text-lg mt-3 leading-6 font-medium text-dkGrey-100'>
           Toiletries
         </h3>
         <p className='mt-1 max-w-2xl text-sm text-teal-100'>
@@ -61,7 +61,7 @@ export default function Step3({ setForm, formData, navigation }) {
           <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
             <div>
               <div>
-                  <h3 className='text-lg leading-6 font-medium text-dkGrey-100'>
+                  <h3 className='text-lg mt-3 leading-6 font-medium text-dkGrey-100'>
           Miscellaneous
         </h3>
         <p className='mt-1 max-w-2xl text-sm text-teal-100'>
@@ -87,7 +87,7 @@ export default function Step3({ setForm, formData, navigation }) {
                     <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36' onClick={previous}>
                       Previous
                     </button>
-                    <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36' onClick={next}>
+                    <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36 ml-3' onClick={next}>
                       Next
                     </button>
                   </div>

@@ -189,7 +189,7 @@ export default function Step2({ setForm, formData,  navigation }) {
                     <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36' onClick={previous}>
                       Previous
                     </button>
-                    <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36' onClick={next}>
+                    <button className='inline-flex justify-center py-2 border border-teal-100 text-base font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 w-36 ml-3' onClick={next}>
                       Next
                     </button>
                   </div>

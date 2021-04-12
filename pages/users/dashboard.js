@@ -38,69 +38,6 @@ export default function Dashboard() {
     });
   }, []);
 
-  // fire.auth()
-  // .onAuthStateChanged((user) => {
-  //   if (user) {
-  //     let uid = user.uid
-  //     console.log(user.email + " is logged in!");
-  //     setLoggedIn(true)
-  //     useEffect(() => {
-  //   const unsubscribe =
-  //   fire.firestore()
-  //   .collection('users')
-  //   .doc(fire.auth().currentUser.uid)
-  //   .collection('itineraries')
-  //   .onSnapshot(snap => {
-  //     const itineraries = snap.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data()
-  //     }));
-  //     setItineraries(itineraries);
-  //     return () => {
-  //       unsubscribe();
-  //     };
-  //   });
-  // }, []);
-  //   } else {
-  //     setLoggedIn(false)
-  //     console.log('User is logged out!');
-  //   }
-  // })
-
-  // useEffect(() => {
-  //   const unsubscribe =
-  //   fire.firestore()
-  //   .collection('users')
-  //   .doc(fire.auth().currentUser.uid)
-  //   .collection('itineraries')
-  //   .onSnapshot(snap => {
-  //     const itineraries = snap.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data()
-  //     }));
-  //     setItineraries(itineraries);
-  //     return () => {
-  //       unsubscribe();
-  //     };
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   const unsubscribe =
-  //   fire.firestore()
-  //   .collection('users/').doc(fire.auth().currentUser.uid).collection('itineraries').where('tripName', '!=', 'null')
-  //   .onSnapshot(snap => {
-  //     const itineraries = snap.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data()
-  //     }));
-  //     setItineraries(itineraries);
-  //     return () => {
-  //       unsubscribe();
-  //     };
-  //   });
-  // }, []);
-
 
   const handleLogout = () => {
     fire.auth()
@@ -108,9 +45,7 @@ export default function Dashboard() {
     router.push('/')
   };
 
-
-
-
+  
 
   return (
     <div>
@@ -181,7 +116,7 @@ export default function Dashboard() {
         {/* begin static */}
         <div className='hidden lg:flex lg:flex-shrink-0'>
     <div className='flex flex-col w-64'>
-      <div className='flex flex-col h-0 flex-1 border-r border-ltGrey-100 bg-ltLime-100'>
+      <div className='flex flex-col h-0 flex-1 border-r border-teal-100 bg-ltLime-100'>
         <div className='flex-1 flex flex-col pt-5 pb-4 overflow-y-auto'>
           <div className='flex items-center flex-shrink-0 px-4'>
             <img className='h-8 w-auto' src='../logo.png' alt='logo' />
@@ -230,10 +165,8 @@ export default function Dashboard() {
     </div>
     <div className='flex flex-col min-w-0 flex-1 overflow-hidden'>
       <div className='lg:hidden'>
-        <div className='flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5'>
-          <div>
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"></img>
-          </div>
+        <div className='flex items-center justify-between bg-gray-50 border-b border-teal-100 px-4 py-1.5'>
+          
           <div>
             <button type='button' className='-mr-3 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900'>
               <span className="sr-only">Open sidebar</span>
@@ -247,21 +180,59 @@ export default function Dashboard() {
       <div className='flex-1 relative z-0 flex overflow-hidden'>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last' tabIndex='0'>
           <div className='absolute inset-0 py-6 px-4 sm:px-6 lg:px-8'>
-            <div className='h-full border-2 border-gray-200 border-dashed rounded-lg'>
-              <ul>
-                {itineraries.map(itinerary =>
-                  <li key={itinerary.id}>
-                    {itinerary.tripName}
+            <div className='h-full border-2 border-ltLime-100 border-dashed rounded-lg'>
+              <h1 className='text-center text-dkGrey-100 font-accent md:text-4xl mt-5'>Upcoming Trips</h1>
+              <div className='mx-28 my-5'>
+              
+                <ul className='divide-y divide-teal-100'>
+                  {itineraries.map(itinerary =>
+                  <li key={itinerary.id} className='py-4'>
+                    <div className='flex space-x-3'>
+                      
+                        
+                         
+                        
+                        <div className='flex-1 space-y-1'>
+                          <div className='flex items-center justify-between'>
+                            <h3 className='md:text-xl text-dkGrey-100'>
+                              {itinerary.tripName}
+                            </h3>
+                            
+                            <Link href='/itineraries/[id]' as={'/itineraries/' + itinerary.id}>
+                            <a className='inline-flex items-center shadow-lg px-2.5 py-0.5 border border-lime-100 md:text-lg leading-5 font-medium rounded-full text-dkGrey-100 bg-white hover:bg-purple-100 hover:border-teal-100 hover:text-white'>
+                                Details
+                              </a>
+                              </Link>
+                              
+                              
+                              
+                            
+                            </div>
+                            <div>
+                              <p className='md:text-md text-mdGrey-100'>
+                              {itinerary.startMonth}.{itinerary.startDay} - {itinerary.endMonth}.{itinerary.endDay}
+                            </p>
+                            
+                           
+                            </div>
+                        </div>
+                      
+                    </div>
                   </li>)}
-              </ul>
+                </ul>
+              
+              </div>
             </div>
           </div>
         </main>
-        <aside className='hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200'>
+        {/* for a future iteration */}
+        {/* <aside className='hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-teal-100'>
           <div className='absolute inset-0 py-6 px-4 sm:px-6 lg:px-8'>
-            <div className='h-full border-2 border-gray-200 border-dashed rounded-lg'></div>
+            <div className='h-full border-2 border-gray-200 border-dashed rounded-lg'>
+              <h1 className='text-center'>Past Trips</h1>
+            </div>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </div>
     </div>
