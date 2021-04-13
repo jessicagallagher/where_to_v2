@@ -1,3 +1,4 @@
+// refer to resources.md for tutorial citations
 import React from 'react';
 import { useForm, useStep } from 'react-hooks-helper';
 import Step1 from './Step1';
