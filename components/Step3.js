@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function Step3({ setForm, formData, navigation }) {
   const { clothesItem, toiletriesItem, miscItem } = formData;
   const { previous, next } = navigation;
@@ -30,9 +29,7 @@ export default function Step3({ setForm, formData, navigation }) {
                       </div>
                   </div>
                 </div>
-                
             </div>
-
           </div>
           <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
             <div>
@@ -54,9 +51,7 @@ export default function Step3({ setForm, formData, navigation }) {
                       </div>
                   </div>
                 </div>
-                
             </div>
-
           </div>
           <div className='space-y-8 divide-y divide-mdGrey-100 sm:space-y-5'>
             <div>
@@ -78,9 +73,7 @@ export default function Step3({ setForm, formData, navigation }) {
                       </div>
                   </div>
                 </div>
-                
             </div>
-
           </div>
           <div className='mt-1 pt-5'>
                   <div className='flex justify-start'>
@@ -92,11 +85,8 @@ export default function Step3({ setForm, formData, navigation }) {
                     </button>
                   </div>
                 </div>
-
         </form>
-
       </div>
-
     </div>
   );
 };

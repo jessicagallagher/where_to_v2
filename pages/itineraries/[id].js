@@ -7,14 +7,11 @@ import withReactContent from 'sweetalert2-react-content';
 import { Router, useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-
 const Itinerary = (props) => {
   const [itinerary, setItinerary] = useState(null);
   const [email, setEmail] = useState('');
   const MySwal = withReactContent(Swal)
   const router = useRouter();
-
-
 
   useEffect(() => {
     fire.firestore()
@@ -40,7 +37,6 @@ const Itinerary = (props) => {
 
   const handleClick = () => {
     
-
     const templateParams = {
       email: email,
       tripName: itinerary.tripName,
@@ -95,6 +91,7 @@ const Itinerary = (props) => {
   <div className='bg-ltLime-100 pb-5'>
     <nav className='sm:hidden' aria-label='Back'>
       <a href='#' className='flex items-center text-sm font-medium text-dkGrey-100 hover:white-100'>
+
         {/* <!-- Heroicon name: solid/chevron-left --> */}
         <svg className='flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-500' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
           <path fillRule='evenodd' d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z' clipRule='evenodd' />
@@ -106,25 +103,25 @@ const Itinerary = (props) => {
       <ol className='flex items-center space-x-4'>
         <li>
           <div>
-            <a href='#' className='text-dkGrey-100 hover:text-teal-100'>
               <a href='/users/dashboard' className='text-lg font-medium text-dkGrey-100 hover:text-teal-100'>Dashboard</a>
-            </a>
           </div>
         </li>
         <li>
           <div className='flex items-center'>
+
             {/* <!-- Heroicon name: solid/chevron-right --> */}
             <svg className='flex-shrink-0 h-5 w-5 text-teal-100' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-              <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd' />
+              <path fillRule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clipRule='evenodd' />
             </svg>
             <a href='/users/dashboard' className='ml-4 text-lg font-medium text-dkGrey-100 hover:text-teal-100'>Upcoming Trips</a>
           </div>
         </li>
         <li>
           <div className='flex items-center'>
+
             {/* <!-- Heroicon name: solid/chevron-right --> */}
             <svg className='flex-shrink-0 h-5 w-5 text-teal-100' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' aria-hidden='true'>
-              <path fill-rule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clip-rule='evenodd' />
+              <path fillRule='evenodd' d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z' clipRule='evenodd' />
             </svg>
             <a href='#' aria-current='page' className='ml-4 text-lg font-medium text-dkGrey-100 hover:text-teal-100'>{itinerary.tripName}</a>
           </div>
@@ -132,6 +129,8 @@ const Itinerary = (props) => {
       </ol>
     </nav>
   </div>
+
+  {/* begin main view */}
   <div className='mt-2 md:flex md:items-center md:justify-between pt-5 px-5 mx-40'>
     <div className='flex-1 min-w-0'>
       <h2 className='text-2xl font-bold leading-7 text-purple-100 sm:text-3xl sm:truncate'>
@@ -218,12 +217,10 @@ const Itinerary = (props) => {
           {itinerary.miscItem}
         </dd>
       </div>
-      
     </dl>
   </div>
 </div>
-</div>
-      
+</div> 
     </div>
   )
 }
@@ -235,6 +232,8 @@ Itinerary.getInitialProps = ({ query }) => {
 }
 
 export default Itinerary
+
+// TODO: print component instead of entire page, figure out how to get emailjs creds to work with .env file
 
 
 
