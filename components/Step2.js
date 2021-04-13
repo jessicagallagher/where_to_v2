@@ -19,19 +19,14 @@ export default function Step2({ setForm, formData,  navigation }) {
           Enter your departure airport + flight information.
         </p>
                   </div>
-
                     <div className='mt-6 sm:mt-5 space-y-6 sm:space-y-5'>
                     <div className='sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-purple-100 sm:pt-5'>
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Airport code</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
                           <input type='text' name='airportCode' id='airportCode' placeholder='JFK' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={airportCode} onChange={setForm}></input>
-
                         </div>
-
                       </div>
-                      
-                    
                   </div>
                   <div className='sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-ltGrey-100 sm:pt-5'>
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Airline name + flight number</label>
@@ -39,14 +34,9 @@ export default function Step2({ setForm, formData,  navigation }) {
                         <div className='max-w-lg flex'>
                           <input type='text' name='airlineName' id='airlineName' placeholder='Delta' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2' value={airlineName} onChange={setForm}></input>
                           <input type='text' name='flightNumber' id='flightNumber' placeholder='DL123' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={flightNumber} onChange={setForm}></input>
-
                         </div>
-
                       </div>
-                      
-                    
                   </div>
-                  
                   <div className='sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-ltGrey-100 sm:pt-5'>
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Flight departure time</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
@@ -75,12 +65,8 @@ export default function Step2({ setForm, formData,  navigation }) {
                           <option defaultValue>AM</option>
                           <option>PM</option>
                           </select>
-
                         </div>
-
                       </div>
-                      
-                    
                   </div>
                   <div className='sm:border-t sm:border-ltGrey-100'>
                     <h3 className='text-lg leading-6 mt-4 font-medium text-dkGrey-100'>
@@ -96,12 +82,8 @@ export default function Step2({ setForm, formData,  navigation }) {
                         <div className='max-w-lg flex'>
                           <input type='number' name='houseNumber' id='houseNumber' placeholder='39' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md mr-2' value={houseNumber} onChange={setForm}></input>
                           <input type='text' name='street' id='street' placeholder='Carroll Street' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={street} onChange={setForm}></input>
-
                         </div>
-
                       </div>
-                      
-                    
                   </div>
                   <div className='sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-ltGrey-100 sm:pt-5'>
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>City + State</label>
@@ -160,29 +142,18 @@ export default function Step2({ setForm, formData,  navigation }) {
                           <option>WV</option>
                           <option>WI</option>
                           <option>WY</option>
-
                           </select>
-                          
                         </div>
-
                       </div>
-                      
-                    
                   </div>
                   <div className='sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-ltGrey-100 sm:pt-5'>
                       <label className='block text-sm font-medium text-dkGrey-100 sm:mt-px sm:pt-2'>Zip</label>
                       <div className='mt-1 sm:mt-0 sm:col-span-2'>
                         <div className='max-w-lg flex'>
                           <input type='number' name='zip' id='zip' placeholder='11231' className='flex-1 block w-full min-w-0 rounded-sm sm:text-sm border border-ltLime-100 shadow-md' value={zip} onChange={setForm}></input>
-
                         </div>
-
                       </div>
-                      
-                    
                   </div>
-                  
-                  
                   </div>
                   <div className='mt-1 pt-5'>
                   <div className='flex justify-start'>
@@ -194,15 +165,10 @@ export default function Step2({ setForm, formData,  navigation }) {
                     </button>
                   </div>
                 </div>
-                
               </div>
-
             </div>
-
           </form>
-
         </div>
-
       </div>
   );
 };

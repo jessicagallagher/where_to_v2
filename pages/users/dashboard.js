@@ -38,14 +38,11 @@ export default function Dashboard() {
     });
   }, []);
 
-
   const handleLogout = () => {
     fire.auth()
       .signOut()
     router.push('/')
   };
-
-  
 
   return (
     <div>
@@ -53,6 +50,7 @@ export default function Dashboard() {
         <title>Your Dashboard</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
       {/* begin mobile / responsive sidebar */}
       <div className='h-screen flex overflow-hidden bg-white'>
         <div className='fixed inset-0 flex z-40 lg:hidden' role='dialog' aria-modal='true'>
@@ -90,12 +88,12 @@ export default function Dashboard() {
               Create New Itinerary
             </a>
             </Link>
-            <a href='#' className='hover:bg-notWhite-100 text-dkGrey-100 group flex items-center px-2 py-2 text-base font-medium rounded-md'>
+            <div className='text-dkGrey-100 group flex items-center px-2 py-2 text-base font-medium rounded-md'>
               <svg className='text-teal-100 mr-4 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
               </svg>
-              Calendar
-            </a>
+              Calendar (Coming Soon!)
+            </div>
             
                 </div>
               </nav>
@@ -113,6 +111,7 @@ export default function Dashboard() {
           <div className='flex-shrink-0 w-14' aria-hidden='true'>
           </div>
         </div>
+
         {/* begin static */}
         <div className='hidden lg:flex lg:flex-shrink-0'>
     <div className='flex flex-col w-64'>
@@ -139,14 +138,13 @@ export default function Dashboard() {
               </a>
               </Link>
 
-              <a href='#' className='hover:bg-notWhite-100 text-dkGrey-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md'>
-                <svg className='text-teal-100 mr-3 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
+              <div className='text-dkGrey-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md'>
+                <svg className='text-dkGrey-100 mr-3 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
                 </svg>
-                Calendar
-              </a>
+                Calendar (Coming Soon!)
+              </div>
 
-              
               </div>
           </nav>
         </div>
@@ -177,54 +175,43 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* begin main container */}
       <div className='flex-1 relative z-0 flex overflow-hidden'>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last' tabIndex='0'>
           <div className='absolute inset-0 py-6 px-4 sm:px-6 lg:px-8'>
             <div className='h-full border-2 border-ltLime-100 border-dashed rounded-lg'>
               <h1 className='text-center text-dkGrey-100 font-accent md:text-4xl mt-5'>Upcoming Trips</h1>
               <div className='mx-28 my-5'>
-              
                 <ul className='divide-y divide-teal-100'>
                   {itineraries.map(itinerary =>
                   <li key={itinerary.id} className='py-4'>
                     <div className='flex space-x-3'>
-                      
-                        
-                         
-                        
                         <div className='flex-1 space-y-1'>
                           <div className='flex items-center justify-between'>
                             <h3 className='md:text-xl text-dkGrey-100'>
                               {itinerary.tripName}
                             </h3>
-                            
                             <Link href='/itineraries/[id]' as={'/itineraries/' + itinerary.id}>
                             <a className='inline-flex items-center shadow-lg px-2.5 py-0.5 border border-lime-100 md:text-lg leading-5 font-medium rounded-full text-dkGrey-100 bg-white hover:bg-purple-100 hover:border-teal-100 hover:text-white'>
                                 Details
                               </a>
-                              </Link>
-                              
-                              
-                              
-                            
+                              </Link> 
                             </div>
                             <div>
                               <p className='md:text-md text-mdGrey-100'>
                               {itinerary.startMonth}.{itinerary.startDay} - {itinerary.endMonth}.{itinerary.endDay}
                             </p>
-                            
-                           
                             </div>
                         </div>
-                      
                     </div>
                   </li>)}
                 </ul>
-              
               </div>
             </div>
           </div>
         </main>
+
         {/* for a future iteration */}
         {/* <aside className='hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-teal-100'>
           <div className='absolute inset-0 py-6 px-4 sm:px-6 lg:px-8'>
@@ -239,3 +226,5 @@ export default function Dashboard() {
     </div>
   )
 }
+
+// TODO: replace SVGs, add calendar, add profile settings with avatar, add past trips, order by ascending? stop using firebase altogether?

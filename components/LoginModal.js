@@ -23,8 +23,6 @@ export default function LoginModal() {
     setUsername('')
     setPassword('')
 
-    
-
     fire.auth()
   .onAuthStateChanged((user) => {
     if (user) {
@@ -40,12 +38,9 @@ export default function LoginModal() {
     router.push('/users/dashboard')
   };
 
-  // absolute py-2 left-1/3 bottom-1/3 ml-8
-
   return (
     <>
-    <button type='button' className='inline-flex float-left justify-center py-2 border border-teal-100 bg-transparent text-base font-medium rounded-md text-dkGrey-100 hover:border-purple-100 w-36' onClick={() => setOpen(true)}>Login</button>
-    
+    <button type='button' className='inline-flex float-right justify-center py-2 border border-teal-100 bg-transparent text-base font-medium rounded-md text-dkGrey-100 hover:border-purple-100 w-36' onClick={() => setOpen(true)}>Login</button>
     {open && (
       <LoginPortal selector='#modal'>
     <div className='fixed z-10 inset-0 overflow-y-auto' aria-labelledby='modal-title' role='dialog' aria-modal='true'>
@@ -83,18 +78,14 @@ export default function LoginModal() {
           <input id='password' name='password' type='password' required className='appearance-none rounded-none relative block w-full px-3 py-2 border border-teal-100 rounded-b-md focus:z-10 sm:text-sm' placeholder='Password' value={password} onChange={({target}) => setPassword(target.value)} />
         </div>
       </div>
-
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <input id='remember_me' name='remember_me' type='checkbox' className='h-4 w-4 border-dkGrey-100 rounded' />
           <label htmlFor='remember_me' className='ml-2 block text-sm text-dkGrey-100'>
             Remember me
           </label>
-        </div>
-
-        
+        </div> 
       </div>
-
       <div>
         <button type='submit' className='relative w-1/4 flex justify-center py-2 px-4 border border-teal-100 text-sm font-medium rounded-md text-dkGrey-100 bg-transparent hover:border-purple-100 focus:outline-none focus:ring-2 focus:ring-offset-2'>
           <span className='absolute left-0 inset-y-0 flex items-center pl-3'>
@@ -115,3 +106,5 @@ export default function LoginModal() {
     </>
   )
 }
+
+// TODO: where is the unmounted component? modal or portal?
