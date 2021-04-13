@@ -90,12 +90,12 @@ export default function Dashboard() {
               Create New Itinerary
             </a>
             </Link>
-            <a href='#' className='hover:bg-notWhite-100 text-dkGrey-100 group flex items-center px-2 py-2 text-base font-medium rounded-md'>
-              <svg className='text-teal-100 mr-4 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
+            <div className=' text-dkGrey-100 group flex items-center px-2 py-2 text-base font-medium rounded-md'>
+              <svg className='text-dkGrey-100 mr-4 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
               </svg>
-              Calendar
-            </a>
+              Calendar (Coming Soon!)
+            </div>
             
                 </div>
               </nav>
@@ -139,12 +139,12 @@ export default function Dashboard() {
               </a>
               </Link>
 
-              <a href='#' className='hover:bg-notWhite-100 text-dkGrey-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md'>
-                <svg className='text-teal-100 mr-3 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
+              <div className='text-dkGrey-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md'>
+                <svg className='text-dkGrey-100 mr-3 h-6 w-6' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' aria-hidden='true'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
                 </svg>
-                Calendar
-              </a>
+                Calendar (Coming Soon!)
+              </div>
 
               
               </div>
