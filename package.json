@@ -8,29 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@tailwindcss/forms": "^0.3.2",
-    "@tailwindcss/typography": "^0.4.0",
-    "core-js": "^3.6.5",
-    "emailjs-com": "^2.6.4",
-    "firebase": "^8.4.0",
-    "firebase-app": "^0.0.1",
-    "firebase-auth": "^0.1.2",
-    "next": "10.1.2",
-    "nprogress": "^0.2.0",
-    "postcss-preset-env": "^6.7.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-hooks-helper": "^1.6.0",
-    "sweetalert2": "^10.16.0",
-    "sweetalert2-react-content": "^3.3.1"
+    "next": "^12.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.9",
-    "tailwindcss": "^2.0.4",
-    "tailwindcss-debug-screens": "^2.0.0"
+    "autoprefixer": "^10.4.9",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
   }
 }

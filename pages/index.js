@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import LandingPage from '../components/LandingPage';
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='py-20 px-0 flex flex-col justify-center items-center order-1 w-1/2'>
-        <LandingPage />
       </main>
     </div>
   )
