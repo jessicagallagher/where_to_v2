@@ -1,8 +1,9 @@
 import img from '../public/logo.png'
-import { Button } from '../components/reusable-components'
+import { Button } from './reusable-components'
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function LandingPage() {
   return (
@@ -27,14 +28,13 @@ export default function LandingPage() {
             packing lists to figuring out what time you need to leave to get to
             the airport—all in one convenient location.
           </p>
-          <div className='flex flex-col'>
             <div className='my-8'>
-              <Button buttonText={'Log in'} buttonType={'button'} />
+              <Link href='/login'>
+                <a>
+                  <Button buttonText={'Log in or Create account'} buttonType={'button'} />
+                </a>
+              </Link>
             </div>
-            <div>
-              <Button buttonText={'Create an account'} buttonType={'button'} />
-            </div>
-          </div>
         </div>
       </div>
     </div>
