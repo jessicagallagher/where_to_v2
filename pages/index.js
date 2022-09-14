@@ -1,13 +1,15 @@
+import { LandingPage } from '../components'
 import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div className='container flex flex-col justify-center items-center mx-auto py-0 px-2 min-h-screen sm:px-6 lg:px-8'>
+    <div className='md:py-24'>
       <Head>
         <title>Where To?</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='py-20 px-0 flex flex-col justify-center items-center order-1 w-1/2'>
+      <main>
+        <LandingPage />
       </main>
     </div>
   )
