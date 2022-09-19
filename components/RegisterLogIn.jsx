@@ -1,30 +1,25 @@
-import img from '../public/logo.png'
+import img from '../public/logo.png';
 import { Button, Alert } from './reusable-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { db, auth } from '../firebase/clientApp'
-import { useState, useEffect } from 'react';
+import { db, auth } from '../firebase/clientApp';
+import { useState } from 'react';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
-} from 'firebase/auth'
-import {
-  getFirestore,
-  setDoc,
-  doc,
-  updateDoc,
-} from 'firebase/firestore'
+  signOut,
+} from 'firebase/auth';
+import { getFirestore, setDoc, doc, updateDoc } from 'firebase/firestore';
 
 export default function RegisterLogIn() {
   const router = useRouter();
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isUser, setIsUser] = useState(true)
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isUser, setIsUser] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showDanger, setShowDanger] = useState(false);
   const [dateTime, setDateTime] = useState((dateTime) => {
@@ -33,24 +28,9 @@ export default function RegisterLogIn() {
     return str;
   });
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       let uid = user.uid;
-  //       console.log(`User ${uid} is logged in`);
-  //       updateDoc(doc(db, 'users', user.uid), {
-  //         lastActive: dateTime,
-  //       });
-  //     } else {
-  //       console.log('User is logged out');
-  //     }
-  //   });
-  //   return () => unsubscribe();
-  // }, []);
-
   const handleToggleUser = () => {
-setIsUser(!isUser)
-  }
+    setIsUser(!isUser);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,54 +39,57 @@ setIsUser(!isUser)
     const db = getFirestore();
 
     if (!isUser) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+      createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
           const user = userCredential.user;
-        })
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            let uid = user.uid;
-            setIsUser(true);
-            setShowSuccess(true);
-            console.log(`logged in`);
-            setDoc(doc(db, 'users', user.uid), {
-              firstName: firstName,
-              lastName: lastName,
-              email: email,
-              createdAt: dateTime,
-              updatedAt: dateTime,
-              lastActive: dateTime,
-            });
-            setTimeout(() => {
-              signOut(auth)
-                .then(() => {
-                  console.log(`signed out!`);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-              router.push('/');
-            }, 3000)
-          } 
-        });
-        
+        }
+      );
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          let uid = user.uid;
+          setIsUser(true);
+          setShowSuccess(true);
+          console.log(`logged in`);
+          setDoc(doc(db, 'users', user.uid), {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            createdAt: dateTime,
+            updatedAt: dateTime,
+            lastActive: dateTime,
+          });
+          setTimeout(() => {
+            // signOut(auth)
+            //   .then(() => {
+            //     console.log(`signed out!`);
+            //   })
+            //   .catch((error) => {
+            //     console.log(error);
+            //   });
+            router.push('/dashboard');
+          }, 3000);
+        }
+      });
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          setIsUser(true)
-          console.log(userCredential.user.uid)    
-          let uid = userCredential.user.uid
-          console.log(uid)
+          setIsUser(true);
+          console.log(userCredential.user.uid);
+          let uid = userCredential.user.uid;
+          console.log(uid);
           updateDoc(doc(db, 'users', user.uid), {
             lastActive: dateTime,
+          });
+          setTimeout(() => {
+            router.push('/dashboard')
           })
         })
         .catch((error) => {
-        console.log(error)
-      })
+          console.log(error);
+        });
     }
-  }
+  };
 
   return (
     <div className='flex min-h-full flex-col justify-center py-12 px-6 lg:px-8'>
@@ -118,11 +101,11 @@ setIsUser(!isUser)
           alt={'person standing next to suitcase'}
         />
       </div>
-      <h2 className='mt-6 text-center text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-greyDefault'>
+      <h2 className='mt-6 text-center text-xl md:text-2xl lg:text-3xl font-bold tracking-tight'>
         {isUser ? `Log in` : `Create an account`}
       </h2>
       <p
-        className='mt-2 text-center text-base text-greyDefault cursor-pointer'
+        className='mt-2 text-center text-base cursor-pointer'
         onClick={handleToggleUser}
       >
         <a className='font-semibold text-purple hover:text-teal'>
@@ -150,7 +133,7 @@ setIsUser(!isUser)
                 <div>
                   <label
                     htmlFor='firstName'
-                    className='block text-sm font-medium text-greyDefault'
+                    className='block text-sm font-medium'
                   >
                     First name
                   </label>
@@ -171,7 +154,7 @@ setIsUser(!isUser)
                 <div>
                   <label
                     htmlFor='lastName'
-                    className='block text-sm font-medium text-greyDefault'
+                    className='block text-sm font-medium'
                   >
                     Last name
                   </label>
@@ -194,7 +177,7 @@ setIsUser(!isUser)
             <div>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-greyDefault'
+                className='block text-sm font-medium'
               >
                 Email
               </label>
@@ -215,7 +198,7 @@ setIsUser(!isUser)
             <div>
               <label
                 htmlFor='password'
-                className='block text-sm font-medium text-greyDefault'
+                className='block text-sm font-medium'
               >
                 Password
               </label>
@@ -243,7 +226,7 @@ setIsUser(!isUser)
                 />
                 <label
                   htmlFor='remember-me'
-                  className='ml-2 block text-sm text-greyDefault'
+                  className='ml-2 block text-sm'
                 >
                   Remember me
                 </label>

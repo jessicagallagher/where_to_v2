@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div className='md:py-24'>
+    <div className='lg:py-48 md:py-24 py-12'>
       <Head>
         <title>Where To?</title>
         <link rel="icon" href="/favicon.ico" />
