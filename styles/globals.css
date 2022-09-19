@@ -21,3 +21,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.danger {
+  background: #F7AAAA;
+  color: #7F0000;
+}
+
+.success {
+  background: #A8ECBA;
+  color: #005617;
+}

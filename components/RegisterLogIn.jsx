@@ -1,5 +1,5 @@
 import img from '../public/logo.png'
-import { Button } from './reusable-components';
+import { Button, Alert } from './reusable-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { db, auth } from '../firebase/clientApp'
@@ -8,7 +8,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -18,30 +19,34 @@ import {
 } from 'firebase/firestore'
 
 export default function RegisterLogIn() {
+  const router = useRouter();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isUser, setIsUser] = useState(true)
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showDanger, setShowDanger] = useState(false);
   const [dateTime, setDateTime] = useState((dateTime) => {
     const now = new Date();
     const str = now.toLocaleString();
     return str;
   });
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        let uid = user.uid;
-        console.log(`Second log in check successful`);
-        updateDoc(doc(db, 'users', user.uid), {
-          lastLoggedIn: dateTime,
-        })
-      } else {
-        console.log(`No user is logged in`)
-      }
-    })
-  })
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       let uid = user.uid;
+  //       console.log(`User ${uid} is logged in`);
+  //       updateDoc(doc(db, 'users', user.uid), {
+  //         lastActive: dateTime,
+  //       });
+  //     } else {
+  //       console.log('User is logged out');
+  //     }
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
 
   const handleToggleUser = () => {
 setIsUser(!isUser)
@@ -58,37 +63,48 @@ setIsUser(!isUser)
         .then((userCredential) => {
           const user = userCredential.user;
         })
-        .catch((error) => {
-          console.log(error);
-        })
-        .then(() => {
-          onAuthStateChanged(auth, (user) => {
-            if (user) {
-              let uid = user.uid;
-              setIsUser(true);
-              console.log(`logged in`);
-              setDoc(doc(db, 'users', user.uid), {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                createdAt: dateTime,
-                updatedAt: dateTime,
-                lastActive: dateTime,
-              });
-            } else {
-              console.log(`not logged in`)
-            }
-          });
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            let uid = user.uid;
+            setIsUser(true);
+            setShowSuccess(true);
+            console.log(`logged in`);
+            setDoc(doc(db, 'users', user.uid), {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              createdAt: dateTime,
+              updatedAt: dateTime,
+              lastActive: dateTime,
+            });
+            setTimeout(() => {
+              signOut(auth)
+                .then(() => {
+                  console.log(`signed out!`);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+              router.push('/');
+            }, 3000)
+          } 
         });
+        
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(`${userCredential} is logged in`);
+          setIsUser(true)
+          console.log(userCredential.user.uid)    
+          let uid = userCredential.user.uid
+          console.log(uid)
+          updateDoc(doc(db, 'users', user.uid), {
+            lastActive: dateTime,
+          })
         })
         .catch((error) => {
         console.log(error)
-        })
+      })
     }
   }
 
@@ -105,7 +121,10 @@ setIsUser(!isUser)
       <h2 className='mt-6 text-center text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-greyDefault'>
         {isUser ? `Log in` : `Create an account`}
       </h2>
-      <p className='mt-2 text-center text-base text-greyDefault cursor-pointer' onClick={handleToggleUser}>
+      <p
+        className='mt-2 text-center text-base text-greyDefault cursor-pointer'
+        onClick={handleToggleUser}
+      >
         <a className='font-semibold text-purple hover:text-teal'>
           {isUser
             ? `Don't have an account? Create one`
@@ -114,6 +133,16 @@ setIsUser(!isUser)
       </p>
 
       <div className='mt-8 mx-auto w-full max-w-md'>
+        {showDanger && (
+          <Alert
+            alertText={'There was an error. Please try again.'}
+            type={'danger'}
+          />
+        )}
+
+        {showSuccess && (
+          <Alert alertText={'Success! Redirecting...'} type={'success'} />
+        )}
         <div className='z-50 py-8 px-4 shadow-2xl border border-purple rounded-lg'>
           <form className='space-y-6' onSubmit={handleSubmit}>
             {!isUser && (
@@ -177,7 +206,7 @@ setIsUser(!isUser)
                   autoComplete='email'
                   required
                   className='block w-full appearance-none rounded-md border border-purple px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
-                  placeholder="jane.doe@gmail.com"
+                  placeholder='jane.doe@gmail.com'
                   value={email}
                   onChange={({ target }) => setEmail(target.value)}
                 />
