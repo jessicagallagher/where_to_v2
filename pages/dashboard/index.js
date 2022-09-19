@@ -28,7 +28,7 @@ export default function DashboardHome() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <main className='md:py-24'>
+      <main className='md:pb-24'>
         <UserDashboard />
       </main>
     </div>
